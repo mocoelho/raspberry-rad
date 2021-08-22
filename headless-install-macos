@@ -1,0 +1,26 @@
+#RaspiOS - Headless install
+
+# Passo 1: Após formatar e usar o Raspberry Pi Imager para instalar o OS desejado
+
+touch /Volumes/boot/ssh
+
+# Passo 2: Criar  um documento para conectar ao Wi-Fi
+
+nano /Volumes/boot/wpa_supplicant.conf
+
+# Mudar de acondo com seu pais(https://en.wikipedia.org/wiki/ISO_3166-1) e a rede Wi-Fi que deseja conectar
+
+country=US
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+    ssid="NETWORK-NAME"
+    psk="NETWORK-PASSWORD"
+}
+
+# Feito isso, ejetar o SD do computador, colocar no Raspberry e ligar na tomada. Aguardar o Boot
+
+# Continuar no terminal, conectar no Raspberry:
+
+ssh-keygen -R raspberrypi.local
